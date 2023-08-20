@@ -17,7 +17,6 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'war'
 apply plugin: 'jacoco'
 apply plugin: 'project-report'
 
@@ -29,21 +28,11 @@ sourceSets {
 		}
 	}
 }
-jar {
-	baseName = 'com.ca.mat.rest'
-	version =  '0.1.0'
-}
 
-bootWar{
-	mainClassName ='com.ca.mat.rest.Application'
-	baseName = 'camat'
-}
 
 repositories {
 	mavenCentral()
-	maven {
-		url artifactoryMavenRepo
-	}
+
 }
 
 dependencies {
@@ -116,7 +105,7 @@ dependencies {
 
 	//Testing
 	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.5.3'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
 
 
 	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-test
@@ -173,10 +162,7 @@ jacocoTestReport {
 	}
 }
 
-jacoco {
-	toolVersion = "0.8.5"
-	reportsDir = file("$buildDir/jacoco")
-}
+
 
 test {
 	useJUnitPlatform()
