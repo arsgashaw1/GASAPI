@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-	annotationProcessor 'org.projectlombok:lombok:1.18.26'
+	annotationProcessor 'org.projectlombok:lombok:1.18.28'
 	implementation("org.springframework.boot:spring-boot-gradle-plugin:2.5.4") {
 		exclude module: 'Logback1' // necessary in my case to not end up with multiple mapstruct versions
 		exclude module: 'commons-compress'
@@ -101,7 +101,7 @@ dependencies {
 
 	// implementation group: 'com.ibm.db2', name: 'jcc', version: '11.5.6.0'
 // https://mvnrepository.com/artifact/org.projectlombok/lombok
-	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
 
 	//Testing
 	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.5.3'
