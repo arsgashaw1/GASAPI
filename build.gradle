@@ -60,7 +60,7 @@ dependencies {
 	implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.5.2'
 	implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.5.2'
 	implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.5.2'
-	implementation group: 'org.springframework', name: 'spring-tx', version: '5.3.9'
+	implementation group: 'org.springframework', name: 'spring-tx', version: '5.3.29'
 	implementation "io.springfox:springfox-bean-validators:3.0.0"
 	//Encryption and decryption
 	implementation group: 'org.jasypt', name: 'jasypt', version: '1.9.3'
