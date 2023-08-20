@@ -67,7 +67,7 @@ dependencies {
 	// https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
 	implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
 	// https://mvnrepository.com/artifact/commons-codec/commons-codec
-	implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
+	implementation group: 'commons-codec', name: 'commons-codec', version: '1.16.0'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 
 	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
