@@ -1,0 +1,202 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.5.4")
+	}
+}
+
+plugins {
+	id "org.sonarqube" version "3.2.0"
+
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+apply plugin: 'jacoco'
+apply plugin: 'project-report'
+
+sourceCompatibility = 1.8
+sourceSets {
+	main {
+		resources {
+			srcDirs "src/main/resources", "src/main/configs"
+		}
+	}
+}
+jar {
+	baseName = 'com.ca.mat.rest'
+	version =  '0.1.0'
+}
+
+bootWar{
+	mainClassName ='com.ca.mat.rest.Application'
+	baseName = 'camat'
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url artifactoryMavenRepo
+	}
+}
+
+dependencies {
+	annotationProcessor 'org.projectlombok:lombok:1.18.26'
+	implementation("org.springframework.boot:spring-boot-gradle-plugin:2.5.4") {
+		exclude module: 'Logback1' // necessary in my case to not end up with multiple mapstruct versions
+		exclude module: 'commons-compress'
+		exclude module: 'logback-classic'
+		exclude module: 'jna-platform'
+		exclude module: 'jna'
+	}
+
+
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.4'
+	//compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.0.1.RELEASE'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.5.3'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-dependencies', version: '2.5.3', ext: 'pom'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	// Spring Framework core libs
+
+	// For Gradle
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	//compile group: 'org.springframework', name: 'spring-webmvc', version: '5.0.7.RELEASE'
+	implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.5.2'
+	implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.5.2'
+	implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.5.2'
+	implementation group: 'org.springframework', name: 'spring-tx', version: '5.3.9'
+	implementation "io.springfox:springfox-bean-validators:3.0.0"
+	//Encryption and decryption
+	implementation group: 'org.jasypt', name: 'jasypt', version: '1.9.3'
+	// https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
+	implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+	// https://mvnrepository.com/artifact/commons-codec/commons-codec
+	implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+
+	// Libraries for Tomcat Deployment of the applicaton
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.5.3'
+	//datacom  driver
+	implementation fileTree(dir: 'libs', include: '*.jar')
+
+	//Swagger Doc
+	implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.10'
+	// https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-core
+	implementation group: 'io.swagger.core.v3', name: 'swagger-core', version: '2.1.10'
+	// https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-models
+	implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.1.10'
+	// https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
+	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+	// https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path
+	implementation group: 'org.json', name: 'json', version: '20190722'
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
+	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.12.5'
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.5'
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.12.5'
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+
+	// implementation group: 'com.ibm.db2', name: 'jcc', version: '11.5.6.0'
+// https://mvnrepository.com/artifact/org.projectlombok/lombok
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+
+	//Testing
+	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.5.3'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-test
+	testImplementation group: 'org.springframework.security', name: 'spring-security-test', version: '5.4.5'
+	// https://mvnrepository.com/artifact/org.springframework/spring-test
+	testImplementation group: 'org.springframework', name: 'spring-test', version: '5.3.18'
+	// https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
+	// https://mvnrepository.com/artifact/org.jasypt/jasypt
+	// https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.0'
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-test
+	testImplementation group: 'org.springframework.security', name: 'spring-security-test', version: '5.6.2'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+
+
+
+
+}
+tasks {
+
+	processResources {
+		duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
+	}
+}
+test {
+	//  exclude '**/*.*'
+}
+test {
+	testLogging.showStandardStreams = true
+	finalizedBy jacocoTestReport // report is always generated after tests run
+}
+jacocoTestReport {
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it,
+					exclude: [
+							'com/ca/mat/rest/exceptionhandler/**.*',
+							'com/ca/mat/rest/utils/Validation.*',
+							'com/ca/mat/rest/utils/HttpClient.*',
+							'com/ca/mat/rest/utils/YmlParser.*',
+							'com/ca/mat/rest/utils/TokenProvider.*',
+
+					]
+			)
+		}))
+	}
+	dependsOn test // tests are required to run before generating the report
+	reports {
+		xml.required = true
+		csv.required = true
+		html.outputLocation = file("$buildDir/jacoco")
+	}
+}
+
+jacoco {
+	toolVersion = "0.8.5"
+	reportsDir = file("$buildDir/jacoco")
+}
+
+test {
+	useJUnitPlatform()
+}
+/*jacocoTestCoverageVerification {
+    afterEvaluate {
+        getClassDirectories().setFrom(classDirectories.files.collect {
+            fileTree(dir: it, exclude:  [
+                    'com/ca/mat/rest/configurations/*',
+                    'com/ca/mat/rest/dbresponse/*',
+                    'com/ca/mat/rest/exceptionhandler/*',
+                    'com.ca.mat.rest.utils.*'
+            ])
+        })
+    }
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.0079
+            }
+        }
+    }
+} */
