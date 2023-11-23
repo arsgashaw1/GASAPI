@@ -49,7 +49,7 @@ dependencies {
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.4'
 	//compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.0.1.RELEASE'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.5.3'
-	implementation group: 'org.springframework.boot', name: 'spring-boot-dependencies', version: '2.5.3', ext: 'pom'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-dependencies', version: '2.7.18', ext: 'pom'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	// Spring Framework core libs
 
