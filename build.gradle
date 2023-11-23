@@ -3,7 +3,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.5.4")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.7.18")
 	}
 }
 
@@ -37,7 +37,7 @@ repositories {
 
 dependencies {
 	annotationProcessor 'org.projectlombok:lombok:1.18.28'
-	implementation("org.springframework.boot:spring-boot-gradle-plugin:2.5.4") {
+	implementation("org.springframework.boot:spring-boot-gradle-plugin:2.7.18") {
 		exclude module: 'Logback1' // necessary in my case to not end up with multiple mapstruct versions
 		exclude module: 'commons-compress'
 		exclude module: 'logback-classic'
