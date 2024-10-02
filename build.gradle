@@ -81,7 +81,7 @@ dependencies {
 	//Swagger Doc
 	implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.10'
 	// https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-core
-	implementation group: 'io.swagger.core.v3', name: 'swagger-core', version: '2.1.10'
+	implementation group: 'io.swagger.core.v3', name: 'swagger-core', version: '2.2.25'
 	// https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-models
 	implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.1.10'
 	// https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
